@@ -14,7 +14,7 @@ scytale(message, col, encrypt = TRUE)
 \item{encrypt}{(Default: \code{TRUE}) TRUE will encrypt the message, while FALSE will decrypt the message.}
 }
 \value{
-A character vector of either encrypted ciphertext or decrypted plaintext
+A character vector of either plaintext that has been encrypted or ciphertext that has been decrypted.
 }
 \description{
 This can be used to create (encrypt) and solve (decrypt) a

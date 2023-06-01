@@ -10,7 +10,7 @@
 #' @param col A positive integer, this determines the number of columns in the encryption matrix. 1 column will have no effect
 #' @param encrypt (Default: `TRUE`) TRUE will encrypt the message, while FALSE will decrypt the message.
 #'
-#' @return A character vector of either encrypted ciphertext or decrypted plaintext
+#' @return A character vector of either plaintext that has been encrypted or ciphertext that has been decrypted.
 #' @export
 #'
 #' @examples scytale("very secret message!", col = 4, encrypt = TRUE)
@@ -27,17 +27,11 @@ scytale <- function(message, col, encrypt=TRUE) {
 
 scytale_encrypt <- function(message, col) {
   substrings <- strsplit(message, "")[[1]]
-  if (length(substrings) %% col != 0)
-  {
-    cipher.matrix <- matrix(substrings, ncol = col, byrow = TRUE)
-    for (i in 0:((col-(length(substrings) %% col)-1)))
-    {
-      cipher.matrix[1+floor(length(substrings)/col),col-i] <- ""
+  cipher.matrix <- matrix(substrings, ncol = col, byrow = TRUE)
+  if (length(substrings) %% col != 0) {
+    for (i in 0:((col-(length(substrings) %% col)-1))) {
+    cipher.matrix[1+floor(length(substrings)/col),col-i] <- ""
     }
-  }
-  else
-  {
-    cipher.matrix <- matrix(substrings, ncol = col, byrow = TRUE)
   }
   encrypted.matrix <- gsub("", "", c(cipher.matrix))
   paste(encrypted.matrix, collapse = "")
