@@ -15,6 +15,16 @@
 #'
 #' @examples scytale("very secret message!", col = 4, encrypt = TRUE)
 scytale <- function(message, col, encrypt=TRUE) {
+
+  # stop if message is not a character vector
+  stopifnot(inherits(message,"character"))
+
+  # stop if cols is not a positive integer
+  if (col %% 1 != 0 | col < 1) {
+    stop("col must be a single integer greater than or equal to 1")
+  }
+
+  # calling the encryption or decryption method
   if (encrypt == TRUE) {
     message <- scytale_encrypt(message, col)
   }
@@ -26,20 +36,41 @@ scytale <- function(message, col, encrypt=TRUE) {
 
 
 scytale_encrypt <- function(message, col) {
+
+  # splitting the message into individual characters
   substrings <- strsplit(message, "")[[1]]
-  cipher.matrix <- matrix(substrings, ncol = col, byrow = TRUE)
+
+  # if the length of the message is not divisible by the number of columns must append with empty values to fill matrix
   if (length(substrings) %% col != 0) {
-    for (i in 0:((col-(length(substrings) %% col)-1))) {
-    cipher.matrix[1+floor(length(substrings)/col),col-i] <- ""
+    for (i in 1:(col-(length(substrings) %% col))) {
+      substrings <- append(substrings, "", after = length(substrings))
     }
   }
-  encrypted.matrix <- gsub("", "", c(cipher.matrix))
-  paste(encrypted.matrix, collapse = "")
+
+  # filling the cipher matrix with the individual characters
+  cipher.matrix <- matrix(substrings, ncol = col, byrow = TRUE)
+
+  # paste encrypted message from cipher matrix
+  paste(cipher.matrix, collapse = "")
 }
 
 
 scytale_decrypt <- function(message, col) {
+
+  # splitting the message into individual characters
   substrings <- strsplit(message, "")[[1]]
+
+  # if the length of the message is not divisible by the number of columns must append with empty values in the correct
+  # places to fill matrix
+  if (length(substrings) %% col != 0) {
+    for (i in (length(substrings) %% col):(col-1)) {
+      substrings <- append(substrings, "", after = ((i+1)*(ceiling(length(substrings)/col)))-1)
+    }
+  }
+
+  # filling the decryption matrix with the substrings
   decrypted.matrix <- matrix(substrings, ncol = col, byrow = FALSE)
+
+  # paste decrypted message from decrypted matrix
   paste(t(decrypted.matrix), collapse = "")
 }
