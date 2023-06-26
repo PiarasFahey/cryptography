@@ -36,7 +36,7 @@ columnar_transposition <- function(message, key, encrypt=TRUE) {
     x.mat <- data.frame(matrix(x, ncol = y, byrow = TRUE))
     colnames(x.mat) <- z
     x.mat <- as.matrix(x.mat[,order(names(x.mat))])
-    encrypted.message <- paste(t(x.mat), collapse = "")
+    encrypted.message <- paste((x.mat), collapse = "")
   }
 
   columnar_transposition_decrypt <- function(message, key)
@@ -59,6 +59,6 @@ columnar_transposition <- function(message, key, encrypt=TRUE) {
     x.mat <- t(matrix(x, ncol = y, byrow = TRUE))
     row.names(x.mat) <- order(z)
     x.mat <- x.mat[order(row.names(x.mat)), ]
-    encrypted.message <- paste((x.mat), collapse = "")
+    encrypted.message <- paste(t(x.mat), collapse = "")
   }
 

@@ -9,7 +9,8 @@ test_that("encryption and decrytion works when length of text is not divisible b
 })
 
 test_that("function works on itself with encryption and decryption options", {
-  expect_equal(scytale(scytale("Do not tell them the secret!", col = 3, encrypt = TRUE),col = 3, encrypt = FALSE), "Do not tell them the secret!")
+  expect_equal(scytale(scytale("Do not tell them the secret!", col = 3, encrypt = TRUE), col = 3, encrypt = FALSE),
+               "Do not tell them the secret!")
 })
 
 test_that("input text must be a character vector", {
@@ -21,4 +22,5 @@ test_that("column parameter must be a positive integer", {
   expect_error(scytale("very secret message!", 1.56))
   expect_error(scytale("very secret message!", "a"))
   expect_error(scytale("very secret message!", -3))
+  expect_error(scytale("very secret message!", 0))
 })
