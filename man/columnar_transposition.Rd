@@ -9,7 +9,7 @@ columnar_transposition(message, key, encrypt = TRUE)
 \arguments{
 \item{message}{A character vector}
 
-\item{key}{An \link{a-zA-Z} character vector used as the encryption key}
+\item{key}{An "a-zA-Z" character vector used as the encryption key}
 
 \item{encrypt}{(Default: \code{TRUE}) TRUE will encrypt the message, while FALSE will decrypt the message.}
 }
@@ -18,7 +18,9 @@ A character vector of either plaintext that has been encrypted or ciphertext tha
 using the columnar transposition cryptographic method.
 }
 \description{
-Columnar Transposition Cipher
+This can be used to create (encrypt) or solve (decrypt) a columnar transposition cipher.
+This method is a development of the Scytale cipher that rearranges the encryption matrix used in the
+Scytale method by the alphabetical ordering of the encryption key.
 }
 \examples{
 columnar_transposition("Hidden message", "hack", encrypt = TRUE)
