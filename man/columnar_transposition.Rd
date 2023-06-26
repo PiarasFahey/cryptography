@@ -9,12 +9,13 @@ columnar_transposition(message, key, encrypt = TRUE)
 \arguments{
 \item{message}{A character vector}
 
-\item{key}{A character vector used as the encryption key}
+\item{key}{An \link{a-zA-Z} character vector used as the encryption key}
 
 \item{encrypt}{(Default: \code{TRUE}) TRUE will encrypt the message, while FALSE will decrypt the message.}
 }
 \value{
-A character vector of either plaintext that has been encrypted or ciphertext that has been decrypted.
+A character vector of either plaintext that has been encrypted or ciphertext that has been decrypted
+using the columnar transposition cryptographic method.
 }
 \description{
 Columnar Transposition Cipher
