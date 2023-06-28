@@ -3,7 +3,7 @@ Title: Encrypts and Decrypts Text Ciphers
 Version: 0.0.0.9000
 Authors@R: 
     person("Piaras", "Fahey", , "faheypi@tcd.ie", role = c("aut", "cre"))
-Description: Encrypts and Decrypts text ciphers using the Playfair, Scytale, Columnar Transposition and Autokey Methods of cryptography.
+Description: Encrypts and Decrypts text ciphers using the Playfair, Four-Square, Scytale, Columnar Transposition and Autokey Methods of cryptography.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
