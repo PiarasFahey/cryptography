@@ -2,4 +2,6 @@
 
 export(autokey)
 export(columnar_transposition)
+export(four_square)
+export(playfair)
 export(scytale)
