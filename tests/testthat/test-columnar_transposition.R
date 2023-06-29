@@ -20,6 +20,10 @@ test_that("function works when key is not alphabetically ordered and length of i
   expect_equal(columnar_transposition("cmaetsregsese", key = "sham", encrypt = FALSE), "secretmessage")
 })
 
+test_that("function is symmetric", {
+  expect_equal(columnar_transposition(columnar_transposition("secret message123", "safe"), "safe", encrypt = FALSE), "secret message123")
+})
+
 test_that("input text must be a character vector", {
   expect_error(columnar_transposition(c(), "key"))
   expect_error(columnar_transposition(matrix(c("a","b","c","d"),2,2), "key"))
@@ -34,7 +38,7 @@ test_that("key must be an [a-zA-Z] character vector", {
   expect_error(columnar_transposition("very secret message", "c A"))
 })
 
-test_that("encrypt must be TRUE or FALSE", {
+test_that("encrypt must be logical", {
   expect_error(columnar_transposition("very secret message!", "safe", encrypt = 12))
   expect_error(columnar_transposition("very secret message!", "safe", encrypt = c("TRUE")))
 })

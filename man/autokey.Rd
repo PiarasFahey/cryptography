@@ -7,9 +7,9 @@
 autokey(message, key, encrypt = TRUE)
 }
 \arguments{
-\item{message}{A character vector composed of a-z alphabetic characters}
+\item{message}{A character vector composed of a-z alphabetic characters and 0-9 numbers}
 
-\item{key}{An encryption key composed of a-z alphabetic characters}
+\item{key}{An encryption key composed of a-z alphabetic characters and 0-9 numbers}
 
 \item{encrypt}{(Default: \code{TRUE}) TRUE will encrypt the message, while FALSE will decrypt the message.}
 }
@@ -17,8 +17,9 @@ autokey(message, key, encrypt = TRUE)
 A character vector of either plaintext that has been encrypted or ciphertext that has been decrypted.
 }
 \description{
-The Autokey Cipher is derived from the Vigenere Ciphere where the key and plaintext are bound to generate a new
-encryption key as an input for the Vigenere method.
+The Autokey Cipher is derived from the Vigenere Cipher where the key and plaintext are bound to generate a new
+encryption key for the Vigenere method. This Vigenere method uses only letters and number, as such only these
+characters may be used as inputs for this Autokey cipher.
 }
 \examples{
 autokey("VerySecretMessage", "Hack", encrypt = TRUE)

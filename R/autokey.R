@@ -1,10 +1,11 @@
 #' Autokey Cipher
 #'
-#' @description The Autokey Cipher is derived from the Vigenere Ciphere where the key and plaintext are bound to generate a new
-#' encryption key as an input for the Vigenere method.
+#' @description The Autokey Cipher is derived from the Vigenere Cipher where the key and plaintext are bound to generate a new
+#' encryption key for the Vigenere method. This Vigenere method uses only letters and number, as such only these
+#' characters may be used as inputs for this Autokey cipher.
 #'
-#' @param message A character vector composed of a-z alphabetic characters
-#' @param key An encryption key composed of a-z alphabetic characters
+#' @param message A character vector composed of a-z alphabetic characters and 0-9 numbers
+#' @param key An encryption key composed of a-z alphabetic characters and 0-9 numbers
 #' @param encrypt (Default: `TRUE`) TRUE will encrypt the message, while FALSE will decrypt the message.
 #'
 #' @return A character vector of either plaintext that has been encrypted or ciphertext that has been decrypted.
@@ -14,6 +15,21 @@
 
 autokey <- function(message, key, encrypt=TRUE)
 {
+  # stop if message is not a character vector
+  if (!is.character(message) || !is.vector(message) || any(grepl("[^a-zA-Z0-9]", message))) {
+    stop("message must be a character vector with only letters and numbers")
+  }
+
+  # stop if the key is not a character vector
+  if (!is.character(key) || !is.vector(key) || any(grepl("[^a-zA-Z0-9]", key))) {
+    stop("key must be a character vector with only letters and numbers")
+  }
+
+  # stop if encrypt is not boolean
+  if (!is.logical(encrypt)) {
+    stop("encrypt must be TRUE or FALSE")
+  }
+
   # calling encrypt method
   if (encrypt == TRUE)
   {

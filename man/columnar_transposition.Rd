@@ -9,7 +9,7 @@ columnar_transposition(message, key, encrypt = TRUE)
 \arguments{
 \item{message}{A character vector}
 
-\item{key}{An "a-zA-Z" character vector used as the encryption key}
+\item{key}{A character vector composed only of a-zA-Z letters used as the encryption key}
 
 \item{encrypt}{(Default: \code{TRUE}) TRUE will encrypt the message, while FALSE will decrypt the message.}
 }

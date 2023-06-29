@@ -6,7 +6,7 @@
 #'
 #'
 #' @param message A character vector
-#' @param key An "a-zA-Z" character vector used as the encryption key
+#' @param key A character vector composed only of a-zA-Z letters used as the encryption key
 #' @param encrypt (Default: `TRUE`) TRUE will encrypt the message, while FALSE will decrypt the message.
 #'
 #' @return A character vector of either plaintext that has been encrypted or ciphertext that has been decrypted
@@ -23,7 +23,7 @@ columnar_transposition <- function(message, key, encrypt=TRUE) {
   }
 
   # stop if the key is not a character vector
-  if (!is.character(key) || any(grepl("[^a-zA-Z]", key))) {
+  if (!is.character(key) || !is.vector(key) || any(grepl("[^a-zA-Z]", key))) {
     stop("key must only contain [a-zA-Z] characters")
   }
 
