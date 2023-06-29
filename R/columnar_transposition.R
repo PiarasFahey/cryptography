@@ -18,11 +18,18 @@
 columnar_transposition <- function(message, key, encrypt=TRUE) {
 
   # stop if message is not a character vector
-  stopifnot(inherits(message,"character"))
+  if (!is.character(message) || !is.vector(message)) {
+    stop("message must be a character vector")
+  }
 
   # stop if the key is not a character vector
-  if (grepl("[a-zA-Z]", key) == FALSE) {
-    stop("key must be an [a-zA-Z] character")
+  if (!is.character(key) || any(grepl("[^a-zA-Z]", key))) {
+    stop("key must only contain [a-zA-Z] characters")
+  }
+
+  # stop if encrypt is not boolean
+  if (!is.logical(encrypt)) {
+    stop("encrypt must be TRUE or FALSE")
   }
 
   # isolating message characters and key characters/length

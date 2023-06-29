@@ -30,4 +30,11 @@ test_that("key must be an [a-zA-Z] character vector", {
   expect_error(columnar_transposition("very secret message!", "密钥"))
   expect_error(columnar_transposition("very secret message!", -3))
   expect_error(columnar_transposition("very secret message!", 0))
+  expect_error(columnar_transposition("very secret message", "check123"))
+  expect_error(columnar_transposition("very secret message", "c A"))
+})
+
+test_that("encrypt must be TRUE or FALSE", {
+  expect_error(columnar_transposition("very secret message!", "safe", encrypt = 12))
+  expect_error(columnar_transposition("very secret message!", "safe", encrypt = c("TRUE")))
 })
