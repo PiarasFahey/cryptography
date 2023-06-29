@@ -20,7 +20,7 @@ test_that("function works when key is not alphabetically ordered and length of i
   expect_equal(columnar_transposition("cmaetsregsese", key = "sham", encrypt = FALSE), "secretmessage")
 })
 
-test_that("function is symmetric", {
+test_that("method is symmetric", {
   expect_equal(columnar_transposition(columnar_transposition("secret message123", "safe"), "safe", encrypt = FALSE), "secret message123")
 })
 
