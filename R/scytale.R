@@ -17,7 +17,9 @@
 scytale <- function(message, col, encrypt=TRUE) {
 
   # stop if message is not a character vector
-  stopifnot(inherits(message,"character"))
+  if (!is.character(message) || !is.vector(message)) {
+    stop("message must be a character vector")
+  }
 
   # stop if cols is not a positive integer
   if (col %% 1 != 0 | col < 1) {
