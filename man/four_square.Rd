@@ -19,7 +19,7 @@ four_square(message, key1, key2, encrypt = TRUE)
 A character vector of either plaintext that has been encrypted or ciphertext that has been decrypted.
 }
 \description{
-The Four-Square cipher is a polyalphabetic substitution cipher that maps digraphs of
+The Four-Square cipher is a polygraphic substitution cipher that maps digraphs of
 some plaintext to two encryption matrices through their position in a square alphabet matrix.
 }
 \examples{

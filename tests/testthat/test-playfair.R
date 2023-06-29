@@ -34,3 +34,19 @@ test_that("function works for x and z at end of input message", {
 test_that("function works with multiple repeated letters for message input", {
   expect_equal(playfair("nnnnalkjstttx", "key", encrypt = TRUE), "SASASASGIENPSZSZSZ")
 })
+
+test_that("function is symmetric for inputs of suitable characters", {
+  expect_equal(playfair(playfair("TESTINGXXZ", "key"), "key", encrypt = FALSE), "TESTINGXXZ")
+})
+
+test_that("message must be a character vector", {
+  expect_error(playfair(c("a","b"), "key"))
+})
+
+test_that("key must be a character vector",{
+  expect_error(playfair("secret message", c()))
+})
+
+test_that("encrypt must be logical", {
+  expect_error(playfair("safety first", "secret", encrypt = MAYBE))
+})

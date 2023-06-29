@@ -17,7 +17,10 @@ playfair(message, key, encrypt = TRUE)
 A character vector of either plaintext that has been encrypted or ciphertext that has been decrypted.
 }
 \description{
-This can used to create (encrypt) or solve (decrypt) a Playfair cipher.
+This can used to create (encrypt) or solve (decrypt) a Playfair cipher. A Playfair Cipher is a method
+of cryptography that generates a 5x5 square matrix from a keyword used as an encryption key. The input of
+plaintext or cipher text is converted to a series of digraphs. These digraphs are then mapped to another value within
+the encryption matrix based on an algorithm selected due to their position in the encryption matrix.
 }
 \examples{
 playfair("super secret message", "safety", encrypt = TRUE)

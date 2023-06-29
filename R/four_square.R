@@ -1,7 +1,7 @@
 
 #' Four-Square Cipher
 #'
-#' @description The Four-Square cipher is a polyalphabetic substitution cipher that maps digraphs of
+#' @description The Four-Square cipher is a polygraphic substitution cipher that maps digraphs of
 #' some plaintext to two encryption matrices through their position in a square alphabet matrix.
 #'
 #'
@@ -15,6 +15,26 @@
 #'
 #' @examples four_square("supersecretmessage", "safety", "first", encrypt = TRUE)
 four_square <- function(message, key1, key2, encrypt = TRUE) {
+
+  # stop if message is not a character vector
+  if (!is.character(message) || !is.vector(message) || length(message) != 1) {
+    stop("message must be a character vector")
+  }
+
+  # stop if the key is not a character vector
+  if (!is.character(key1) || !is.vector(key1) || length(key1) != 1) {
+    stop("key1 must be a character vector")
+  }
+
+  # stop if the key is not a character vector
+  if (!is.character(key2) || !is.vector(key2) || length(key2) != 1) {
+    stop("key2 must be a character vector")
+  }
+
+  # stop if encrypt is not boolean
+  if (!is.logical(encrypt)) {
+    stop("encrypt must be TRUE or FALSE")
+  }
 
   # generating encryption matrices
   encryption.matrix1 <- KeyMatrix(key1)

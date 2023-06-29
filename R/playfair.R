@@ -1,7 +1,10 @@
 
 #' Playfair Cipher
 #'
-#' @description This can used to create (encrypt) or solve (decrypt) a Playfair cipher.
+#' @description This can used to create (encrypt) or solve (decrypt) a Playfair cipher. A Playfair Cipher is a method
+#' of cryptography that generates a 5x5 square matrix from a keyword used as an encryption key. The input of
+#' plaintext or cipher text is converted to a series of digraphs. These digraphs are then mapped to another value within
+#' the encryption matrix based on an algorithm selected due to their position in the encryption matrix.
 #'
 #'
 #' @param message a character vector to be encrypted or decrypted
@@ -13,6 +16,21 @@
 #'
 #' @examples playfair("super secret message", "safety", encrypt = TRUE)
 playfair <- function(message, key, encrypt = TRUE) {
+
+  # stop if message is not a character vector
+  if (!is.character(message) || !is.vector(message) || length(message) != 1) {
+    stop("message must be a character vector")
+  }
+
+  # stop if the key is not a character vector
+  if (!is.character(key) || !is.vector(key) || length(key) != 1) {
+    stop("key must be a character vector")
+  }
+
+  # stop if encrypt is not boolean
+  if (!is.logical(encrypt)) {
+    stop("encrypt must be TRUE or FALSE")
+  }
 
   # generating the encryption matrix from the key input
   encryption.matrix <- KeyMatrix(key)
