@@ -24,3 +24,8 @@ test_that("column parameter must be a positive integer", {
   expect_error(scytale("very secret message!", -3))
   expect_error(scytale("very secret message!", 0))
 })
+
+test_that("encrypt must be TRUE or FALSE", {
+  expect_error(scytale("very secret message", 6, encrypt = "safety"))
+  expect_error(scytale("very secret message", 5, encrypt = 3))
+})
