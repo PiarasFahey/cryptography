@@ -23,6 +23,8 @@ test_that("column parameter must be a positive integer", {
   expect_error(scytale("very secret message!", "a"))
   expect_error(scytale("very secret message!", -3))
   expect_error(scytale("very secret message!", 0))
+  expect_error(scytale("very secret message!", c(2:4)))
+  expect_error(scytale("very secret message!", matrix(1:4, nrow = 2, ncol = 2)))
 })
 
 test_that("encrypt must be logical", {

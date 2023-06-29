@@ -17,16 +17,16 @@
 scytale <- function(message, col, encrypt=TRUE) {
 
   # stop if message is not a character vector
-  if (!is.character(message) || !is.vector(message)) {
+  if (!is.character(message) || !is.vector(message) || length(message) != 1) {
     stop("message must be a character vector")
   }
 
   # stop if cols is not a positive integer
-  if (col %% 1 != 0 | col < 1) {
+  if (length(col) != 1 || col < 1 || col %% 1 != 0) {
     stop("col must be a single integer greater than or equal to 1")
   }
 
-  # stop if encrypt input is not boolean
+  # stop if encrypt input is not logical
   if (!is.logical(encrypt)) {
     stop("encrypt must be TRUE or FALSE")
   }

@@ -1,11 +1,11 @@
 #' Autokey Cipher
 #'
 #' @description The Autokey Cipher is derived from the Vigenere Cipher where the key and plaintext are bound to generate a new
-#' encryption key for the Vigenere method. This Vigenere method uses only letters and number, as such only these
-#' characters may be used as inputs for this Autokey cipher.
+#' encryption key for the Vigenere method. This Vigenere method uses only letters and number, as such any other characters
+#' used as inputs are not used in the cipher.
 #'
-#' @param message A character vector composed of a-z alphabetic characters and 0-9 numbers
-#' @param key An encryption key composed of a-z alphabetic characters and 0-9 numbers
+#' @param message A character vector of plaintext to be encrypted or ciphertext to be decrypted
+#' @param key A character vector to be used as the encryption key
 #' @param encrypt (Default: `TRUE`) TRUE will encrypt the message, while FALSE will decrypt the message.
 #'
 #' @return A character vector of either plaintext that has been encrypted or ciphertext that has been decrypted.
@@ -16,19 +16,25 @@
 autokey <- function(message, key, encrypt=TRUE)
 {
   # stop if message is not a character vector
-  if (!is.character(message) || !is.vector(message) || any(grepl("[^a-zA-Z0-9]", message))) {
-    stop("message must be a character vector with only letters and numbers")
+  if (!is.character(message) || !is.vector(message) || length(message) != 1) {
+    stop("message must be a character vector")
   }
 
   # stop if the key is not a character vector
-  if (!is.character(key) || !is.vector(key) || any(grepl("[^a-zA-Z0-9]", key))) {
-    stop("key must be a character vector with only letters and numbers")
+  if (!is.character(key) || !is.vector(key) || length(key) != 1) {
+    stop("key must be a character vector")
   }
 
   # stop if encrypt is not boolean
   if (!is.logical(encrypt)) {
     stop("encrypt must be TRUE or FALSE")
   }
+
+  # changing message to only valid characters (all letters and numbers)
+  message <- gsub("[^A-Za-z0-9]", "", message)
+
+  # changing key to only valid characters (all letters and numbers)
+  key <- gsub("[^A-Za-z0-9]", "", key)
 
   # calling encrypt method
   if (encrypt == TRUE)
