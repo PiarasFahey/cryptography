@@ -1,7 +1,7 @@
 #' Scytale cipher
 #'
-#' @description This can be used to create (encrypt) and solve (decrypt) a
-#'   Scytale Cipher. A Scytale Cipher is an ancient form of cryptography that wraps a message (typically written
+#' @description This can be used to encrypt and decrypt a
+#'   Scytale cipher. A Scytale cipher is an ancient form of cryptography that wraps a message (typically written
 #'   on a long thing piece of paper) around a device to create a matrix with a fixed number of columns that transposes
 #'   the text.
 #'

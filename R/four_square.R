@@ -1,8 +1,8 @@
 
 #' Four-Square Cipher
 #'
-#' @description The Four-Square cipher is a polygraphic substitution cipher that maps digraphs of
-#' some plaintext to two encryption matrices through their position in a square alphabet matrix.
+#' @description This can be used to encrypt or decrypt a Four-Square cipher. The Four-Square cipher is a polygraphic
+#' substitution cipher that maps digraphs of text to two encryption matrices through their position in a square alphabet matrix.
 #'
 #'
 #' @param message a character vector used as the plaintext to be encrypted or the ciphertext to be decrypted

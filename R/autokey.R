@@ -1,8 +1,8 @@
 #' Autokey Cipher
 #'
-#' @description The Autokey Cipher is derived from the Vigenere Cipher where the key and plaintext are bound to generate a new
-#' encryption key for the Vigenere method. This Vigenere method uses only letters and number, as such any other characters
-#' used as inputs are not used in the cipher.
+#' @description This can be used to encrypt or decrypt an Autokey cipher. The Autokey Cipher is derived from the Vigenere Cipher,
+#'  in which the key and plaintext are bound to generate a new encryption key for the Vigenere method.
+#'  This Vigenere method uses only letters and number, as such any other characters used as inputs are not used in the cipher.
 #'
 #' @param message A character vector of plaintext to be encrypted or ciphertext to be decrypted
 #' @param key A character vector to be used as the encryption key

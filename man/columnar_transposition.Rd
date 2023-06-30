@@ -18,7 +18,7 @@ A character vector of either plaintext that has been encrypted or ciphertext tha
 using the columnar transposition cryptographic method.
 }
 \description{
-This can be used to create (encrypt) or solve (decrypt) a columnar transposition cipher.
+This can be used to encrypt or decrypt a Columnar Transposition cipher.
 This method is a development of the Scytale cipher that rearranges the encryption matrix used in the
 Scytale method by the alphabetical ordering of the encryption key.
 }
