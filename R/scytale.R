@@ -13,7 +13,10 @@
 #' @return A character vector of either plaintext that has been encrypted or ciphertext that has been decrypted.
 #' @export
 #'
-#' @examples scytale("very super secret message!", col = 4, encrypt = TRUE)
+#' @examples
+#' scytale("very super secret message!", col = 4, encrypt = TRUE)
+#' scytale("v eetseesrc s!ru rmaypseeg", col = 4, encrypt = FALSE)
+#'
 scytale <- function(message, col, encrypt=TRUE) {
 
   # stop if message is not a character vector

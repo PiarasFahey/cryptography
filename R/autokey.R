@@ -11,8 +11,11 @@
 #' @return A character vector of either plaintext that has been encrypted or ciphertext that has been decrypted.
 #' @export
 #'
-#' @examples autokey("VerySecretMessage", "Hack", encrypt = TRUE)
-
+#' @examples
+#' autokey("VerySecretMessage", "Hack", encrypt = TRUE)
+#' autokey("c4JYn8JfwNoLMbmAM", "Hack", encrypt = FALSE)
+#' autokey("Very $%^&SecretMes(*sag£$%e", "Hack", encrypt = TRUE)
+#'
 autokey <- function(message, key, encrypt=TRUE)
 {
   # stop if message is not a character vector

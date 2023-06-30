@@ -1,0 +1,211 @@
+---
+title: "cryptography"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{cryptography}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(cryptography)
+```
+
+# Introduction
+
+cryptography provides functionality for the encryption and decryption of text ciphers using the Scytale, Columnar-Transposition, Autokey, Playfair and Four-Square methods of encryption.
+
+# Installation
+
+```{r}
+# To install and load the package from GitHub
+# library(devtools)
+# install_github("PiarasFahey/cryptography")
+
+library(cryptography)
+
+```
+
+# Scytale cipher
+
+The Scytale is a transpositional cipher. Typically used as a mechanical cipher in which a strip of paper is wrapped around a cylinder of fixed radius, text is written across the rows of the paper and then un-winded to be sent as ciphertext.
+
+This can be equated to a simple system in which plaintext is entered into a matrix by row and the ciphertext is read by the transpose of this matrix.
+
+To decrypt the ciphertext, the recipient must also possess a cylinder of equal radius to wrap the strip of paper around which order the inputted characters in correct rows.
+
+Thus the inputs to the Scytale function must consist of:
+
+  - A character vector of text to be encrypted or decrypted
+  
+  - A positive integer which determines the dimensions of the Scytale tool by defining the number of columns
+  
+  - A logical statement as to whether the text is to be encrypted or decrypted
+  
+An example here gives the plaintext to be "Very super secret message!" (obviously something of great importance to be encrypted), a column length of 4 and a statement for the message to be encrypted:
+
+```{r}
+scytale("very super secret message!", col = 4, encrypt = TRUE)
+```
+
+This produces an output of "v eetseesrc s!ru rmaypseeg". Our message is safely encrypted!
+
+Decrypting this outputted ciphertext with the same column length will produce our original plaintext:
+
+```{r}
+scytale("v eetseesrc s!ru rmaypseeg", col = 4, encrypt = FALSE)
+```
+
+
+
+# Columnar-Transposition
+
+The Columnar-Transposition builds on the Scytale cipher by adding an additional level of complexity.
+
+Rather than have the number of columns defined by an integer input, an alphabetic key is used to generate this value. The number of characters of the keyword determines the number of columns. Further to this the columns that the plaintext are entered into are rearranged in alphabetical order before being transposed. 
+
+This adds an additional level of security as a potential attacker would need to now know the length of the word and the order of it's characters.
+
+The inputs for a Columnar-Transposition function must consist of:
+
+  - A character vector of text to be encrypted or decrypted
+  
+  - An alphabetic key word
+  
+  - A logical statement as to whether the text is to be encrypted or decrypted
+  
+An example here gives the plaintext of "Hidden message" to be encrypted with the keyword "hack".
+
+This will give the same output as a Scytale cipher of length 4 but with the columns rearranged in the order "2, 3, 1, 4".
+
+```{r}
+columnar_transposition("Hidden message", "hack", encrypt = TRUE)
+```
+
+Decrypting this outputted ciphertext with the same keyword gives the original plaintext:
+
+```{r}
+columnar_transposition("insed sHeegdma", "hack", encrypt = FALSE)
+```
+
+
+
+# Autokey cipher
+
+The Autokey cipher is a form of Vigenere substitution cipher that incorporates the plaintext into the key.
+
+In order to avoid repeated cycles of substitution from a fixed encryption key or repetition of an encryption key present in the Vigenere cipher, the Autokey cipher generates an encryption key by binding a key word and the plaintext to form an encryption key.
+
+This ensures no repeatability of substitution in the Vigenere cipher that would otherwise be present if the plaintext is greater in length than the encryption key.
+
+Thus the inputs for an Autokey cipher are the same as those for a Vigenere cipher:
+
+  - A character vector of text to be encrypted or decrypted
+  
+  - A character vector keyword used to generate the new encryption key
+  
+  - A logical statement as to whether the text is to be encrypted or decrypted
+  
+An important note is that the autokey function is a wrapper on the DescTools::Vigenere function which discards any non alphanumeric characters. As such this function has the same limitations.
+
+An example here gives the plaintext "VerySecretMessage" with the keyword "Hack" to be encrypted.
+
+This will encrypt the plaintext with the Vigenere cipher with an encryption key "HackVerySecretMes" (A non-repeated encryption key with the same length as the plaintext)
+
+```{r}
+autokey("VerySecretMessage", "Hack", encrypt = TRUE)
+```
+
+Decrypting this outputted ciphertext with the same keyword gives the original plaintext:
+
+```{r}
+autokey("c4JYn8JfwNoLMbmAM", "Hack", encrypt = FALSE)
+```
+
+In this example, unsuitable characters are present but will be discarded with only the alphanumeric characters being encrypted:
+
+```{r}
+autokey("Very $%^&SecretMes(*sag£$%e", "Hack", encrypt = TRUE)
+```
+
+Which if decrypted will produce the plaintext of only the alphanumeric characters:
+
+```{r}
+autokey("c4JYn8JfwNoLMbmAM", "Hack", encrypt = FALSE)
+```
+
+
+# Playfair cipher
+
+The Playfair cipher or Playfair square is the first widely used digram substitution cipher.
+
+The Playfair cipher generates an alphabetic 5x5 encryption matrix from a keyword to act as a cipher key. The plaintext is converted to a series of digrams with a series of conditions (groups of 2 letters) which are then mapped within the encryption matrix according to 4 possible permutations of digram element location.
+
+The inputs for the Playfair cipher are:
+
+  - An alphabetic character vector of text to be encrypted or decrypted
+  
+  - An alphabetic keyword used to generate the encryption matrix
+  
+  - A logical statement as to whether the text is to be encrypted or decrypted
+  
+As the Playfair cipher is an alphabetic cipher, only a-zA-Z characters are preserved in both encryption and decryption. This will lead to non-symmetric results if non-alphabetic characters are present in the message input.
+
+Also to note is the Playfair cipher is not case sensitive and all outputs will be in uppercase.
+
+An example of the Playfair cipher with suitable input text of "SUPERSECRETMESSAGE" with the keyword "safety":
+
+```{r}
+playfair("SUPERSECRETMESSAGE", "safety", encrypt = TRUE)
+```
+
+Decrypting this outputted ciphertext will result in the original plaintext:
+
+```{r}
+playfair("YSQFNTFDQTGRTAAFDT", "safety", encrypt = FALSE)
+```
+
+An example of unsuitable characters for input text and key with a message of "$%^Att&(a09Ck___He86re" (AttackHere is the message of suitable characters) when encrypted and decrypted will produce only the capitalised suitable input characters:
+
+```{r}
+playfair(playfair("$%^Att&(a09Ck___He86re", "safety"), "safety", encrypt = FALSE)
+```
+
+
+# Four-Square cipher
+
+The Four-Square cipher is a polygraphic substitution cipher.
+
+The Four-Square method generates alphabetic encryption matrices in an indentical method to the Playfair method as well as converting the plaintext to a series of digrams (without the extensive Playfair conditions). However two encryption matrices and two square alphabet matrices are used in the Four square method. Wherein each element of each digram is mapped within these matrices to a position in each corresponding encryption matrix to produce each element of ciphertext.
+
+Thus the inputs for the Four-Square cipher are:
+
+  - An alphabetic character vector of text to be encrypted or decrypted
+  
+  - An alphabetic keyword used to generate the first encryption matrix
+  
+  - An alphabetic keyword used to generate the second encryption matrix
+  
+  - A logical statement as to whether the text is to be encrypted or decrypted
+  
+As with the Playfair cipher, the Four-Square cipher is an alphabetic cipher and as such any other character inputs are discarded.
+
+An example of the Four-Square cipher with input "THEPRISONERSHAVEESCAPED" with the keywords "HACK", "SAFE":
+
+```{r}
+four_square("THEPRISONERSHAVEESCAPED", "HACK", "SAFE")
+```
+
+Inputting this result as ciphertext to be decrypted returns the original message but because it is not of length 2, a filler character "X" is generated to facilitate the necessity for complete digrams.
+
+```{r}
+four_square("SHBOTDTMPFSQDFZSCUHFPBCY", "HACK", "SAFE", encrypt = FALSE)
+```
+

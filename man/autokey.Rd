@@ -23,4 +23,7 @@ This Vigenere method uses only letters and number, as such any other characters 
 }
 \examples{
 autokey("VerySecretMessage", "Hack", encrypt = TRUE)
+autokey("c4JYn8JfwNoLMbmAM", "Hack", encrypt = FALSE)
+autokey("Very $\%^&SecretMes(*sag£$\%e", "Hack", encrypt = TRUE)
+
 }

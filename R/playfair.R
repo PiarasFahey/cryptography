@@ -12,7 +12,12 @@
 #' @return A character vector of either plaintext that has been encrypted or ciphertext that has been decrypted.
 #' @export
 #'
-#' @examples playfair("super secret message", "safety", encrypt = TRUE)
+#' @examples
+#' playfair("SUPERSECRETMESSAGE", "safety", encrypt = TRUE)
+#' playfair("YSQFNTFDQTGRTAAFDT", "safety", encrypt = FALSE)
+#' playfair("$%^Att&(a09Ck___He86re", "safety", encrypt = TRUE)
+#' playfair("FSSFKPLSQT", "safety", encrypt = FALSE)
+#'
 playfair <- function(message, key, encrypt = TRUE) {
 
   # stop if message is not a character vector

@@ -13,7 +13,10 @@
 #' @return A character vector of either plaintext that has been encrypted or ciphertext that has been decrypted.
 #' @export
 #'
-#' @examples four_square("supersecretmessage", "safety", "first", encrypt = TRUE)
+#' @examples
+#' four_square("THEPRISONERSHAVEESCAPED", "HACK", "SAFE", encrypt = TRUE)
+#' four_square("SHBOTDTMPFSQDFZSCUHFPBCY", "HACK", "SAFE", encrypt = FALSE)
+#'
 four_square <- function(message, key1, key2, encrypt = TRUE) {
 
   # stop if message is not a character vector

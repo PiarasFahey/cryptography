@@ -24,4 +24,6 @@ the text.
 }
 \examples{
 scytale("very super secret message!", col = 4, encrypt = TRUE)
+scytale("v eetseesrc s!ru rmaypseeg", col = 4, encrypt = FALSE)
+
 }

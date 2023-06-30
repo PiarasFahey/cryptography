@@ -23,5 +23,7 @@ This can be used to encrypt or decrypt a Four-Square cipher. The Four-Square cip
 substitution cipher that maps digrams of text to two encryption matrices through their position in a square alphabet matrix.
 }
 \examples{
-four_square("supersecretmessage", "safety", "first", encrypt = TRUE)
+four_square("THEPRISONERSHAVEESCAPED", "HACK", "SAFE", encrypt = TRUE)
+four_square("SHBOTDTMPFSQDFZSCUHFPBCY", "HACK", "SAFE", encrypt = FALSE)
+
 }

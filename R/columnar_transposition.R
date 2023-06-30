@@ -13,8 +13,10 @@
 #' using the columnar transposition cryptographic method.
 #' @export
 #'
-#' @examples columnar_transposition("Hidden message", "hack", encrypt = TRUE)
-
+#' @examples
+#' columnar_transposition("Hidden message", "hack", encrypt = TRUE)
+#' columnar_transposition("insed sHeegdma", "hack", encrypt = FALSE)
+#'
 columnar_transposition <- function(message, key, encrypt=TRUE) {
 
   # stop if message is not a character vector

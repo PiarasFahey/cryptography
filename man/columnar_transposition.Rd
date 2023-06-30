@@ -24,4 +24,6 @@ Scytale method by the alphabetical ordering of the encryption key.
 }
 \examples{
 columnar_transposition("Hidden message", "hack", encrypt = TRUE)
+columnar_transposition("insed sHeegdma", "hack", encrypt = FALSE)
+
 }
