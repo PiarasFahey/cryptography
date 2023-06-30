@@ -20,7 +20,7 @@ A character vector of either plaintext that has been encrypted or ciphertext tha
 }
 \description{
 This can be used to encrypt or decrypt a Four-Square cipher. The Four-Square cipher is a polygraphic
-substitution cipher that maps digraphs of text to two encryption matrices through their position in a square alphabet matrix.
+substitution cipher that maps digrams of text to two encryption matrices through their position in a square alphabet matrix.
 }
 \examples{
 four_square("supersecretmessage", "safety", "first", encrypt = TRUE)
