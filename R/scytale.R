@@ -13,7 +13,7 @@
 #' @return A character vector of either plaintext that has been encrypted or ciphertext that has been decrypted.
 #' @export
 #'
-#' @examples scytale("very secret message!", col = 4, encrypt = TRUE)
+#' @examples scytale("very super secret message!", col = 4, encrypt = TRUE)
 scytale <- function(message, col, encrypt=TRUE) {
 
   # stop if message is not a character vector
@@ -22,8 +22,8 @@ scytale <- function(message, col, encrypt=TRUE) {
   }
 
   # stop if cols is not a positive integer
-  if (length(col) != 1 || col < 1 || col %% 1 != 0) {
-    stop("col must be a single integer greater than or equal to 1")
+  if (!is.numeric(col) || length(col) != 1 || col < 1 || col %% 1 != 0) {
+    stop("col must be an integer greater than or equal to 1")
   }
 
   # stop if encrypt input is not logical

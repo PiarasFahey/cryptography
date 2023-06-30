@@ -23,5 +23,5 @@ on a long thing piece of paper) around a device to create a matrix with a fixed 
 the text.
 }
 \examples{
-scytale("very secret message!", col = 4, encrypt = TRUE)
+scytale("very super secret message!", col = 4, encrypt = TRUE)
 }
