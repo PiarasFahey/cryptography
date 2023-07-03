@@ -1,4 +1,3 @@
-
 #' Playfair Cipher
 #'
 #' @description This can be used to encrypt or decrypt a Playfair cipher. A Playfair cipher is a polygraphic substitution cipher

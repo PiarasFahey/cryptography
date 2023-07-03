@@ -1,4 +1,3 @@
-
 #' Four-Square Cipher
 #'
 #' @description This can be used to encrypt or decrypt a Four-Square cipher. The Four-Square cipher is a polygraphic

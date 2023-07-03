@@ -2,8 +2,8 @@ Package: cryptography
 Title: Encrypts and Decrypts Text Ciphers
 Version: 0.0.0.9000
 Authors@R: 
-    person("Piaras", "Fahey", email = "faheypi@tcd.ie", role = c("aut", "cre"))
-Description: Encrypts and decrypts text ciphers using the Playfair, Four-Square, Scytale, Columnar Transposition and Autokey methods of cryptography.
+    person("Piaras", "Fahey", email = "faheypi@tcd.ie", role = c("aut", "cre", "cph"))
+Description: Encrypts and decrypts text ciphers using the Playfair, Four-Square, Scytale, Columnar Transposition and Autokey methods.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
