@@ -1,3 +1,5 @@
+[![](https://cranlogs.r-pkg.org/badges/grand-total/crpytography)](https://cran.r-project.org/package=cryptography)
+
 # cryptography
 
 Encrypts and Decrypts Text Ciphers
