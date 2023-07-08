@@ -1,4 +1,4 @@
-[![](https://cranlogs.r-pkg.org/badges/grand-total/cryptography)](https://cran.r-project.org/package=cryptography)
+[![](https://cranlogs.r-pkg.org/badges/cryptography)](https://cran.r-project.org/package=cryptography)
 
 # cryptography
 
